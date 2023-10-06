@@ -60,6 +60,8 @@ const BlockNumber = () => {
 const Account = () => {
     const { account } = useWeb3React();
 
+    console.log('debug___ account : ', account);
+
     return (
         <>
             <span>Account :</span>
@@ -132,10 +134,9 @@ const NextNonce = () => {
 
         return () => {
             stale = true;
-            library.removeListener('block', getNextNonce);
             setNextNonce(undefined);
         }
-    }, []);
+    }, [account, library, chainId]);
 
     return(
         <>
